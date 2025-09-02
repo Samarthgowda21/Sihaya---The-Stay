@@ -1,60 +1,61 @@
-import { Wifi, Snowflake, Tv, Fan, Leaf, Coffee, Bath, Utensils, Sofa, Car, Sprout } from "lucide-react";
+import { Snowflake, Fan, Bath, Waves, Flame, Utensils, Sofa, Car } from "lucide-react";
+import roomImage from "@/assets/room1.png";
 
 export default function RoomsSection() {
   const rooms = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      image: roomImage,
       title: "Deluxe Room",
-      description: "Spacious, private bathroom, WiFi included.",
+      description: "AC, Fan, Private Bath",
       amenities: [
-        { icon: Wifi, text: "WiFi" },
         { icon: Snowflake, text: "AC" },
-        { icon: Tv, text: "TV" }
+        { icon: Fan, text: "Fan" },
+        { icon: Bath, text: "Private Bath" }
       ]
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      image: roomImage,
       title: "Garden View Room",
-      description: "Peaceful garden views, private bathroom, WiFi included.",
+      description: "AC, Fan, Private Bath",
       amenities: [
-        { icon: Wifi, text: "WiFi" },
+        { icon: Snowflake, text: "AC" },
         { icon: Fan, text: "Fan" },
-        { icon: Leaf, text: "Garden" }
+        { icon: Bath, text: "Private Bath" }
       ]
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      image: roomImage,
       title: "Cozy Room",
-      description: "Intimate space, private bathroom, WiFi included.",
+      description: "AC, Fan, Private Bath",
       amenities: [
-        { icon: Wifi, text: "WiFi" },
+        { icon: Snowflake, text: "AC" },
         { icon: Fan, text: "Fan" },
-        { icon: Coffee, text: "Tea/Coffee" }
+        { icon: Bath, text: "Private Bath" }
       ]
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      image: roomImage,
       title: "Standard Room",
-      description: "Comfortable basics, private bathroom, WiFi included.",
+      description: "AC, Fan, Private Bath",
       amenities: [
-        { icon: Wifi, text: "WiFi" },
+        { icon: Snowflake, text: "AC" },
         { icon: Fan, text: "Fan" },
         { icon: Bath, text: "Private Bath" }
       ]
     }
   ];
 
-  const sharedAmenities = [
+  const amenities = [
     { icon: Utensils, text: "Kitchen" },
     { icon: Sofa, text: "Common Area" },
     { icon: Car, text: "Parking" },
-    { icon: Sprout, text: "Garden" },
-    { icon: Tv, text: "Entertainment" },
-    { icon: Wifi, text: "Free WiFi" }
+    { icon: Waves, text: "Swimming Pool" },
+    { icon: Waves, text: "Jacuzzi" },
+    { icon: Flame, text: "Fire Pit" }
   ];
 
   return (
@@ -106,16 +107,16 @@ export default function RoomsSection() {
           ))}
         </div>
         
-        <div className="bg-card rounded-2xl p-8" data-testid="shared-amenities">
-          <h3 className="font-heading font-bold text-2xl text-center mb-8" data-testid="shared-amenities-title">
-            Shared Amenities
+        <div className="bg-card rounded-2xl p-8" data-testid="amenities">
+          <h3 className="font-heading font-bold text-2xl text-center mb-8" data-testid="amenities-title">
+            Amenities
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" data-testid="shared-amenities-grid">
-            {sharedAmenities.map((amenity, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" data-testid="amenities-grid">
+            {amenities.map((amenity, index) => (
               <div 
                 key={index}
                 className="text-center"
-                data-testid={`shared-amenity-${index}`}
+                data-testid={`amenity-${index}`}
               >
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <amenity.icon className="w-6 h-6 text-primary" />

@@ -1,4 +1,5 @@
 import { Leaf, Bed, Users, Car } from "lucide-react";
+import aboutImage from "@/assets/exterior-garden.png";
 
 export default function AboutSection() {
   const highlights = [
@@ -14,7 +15,7 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div data-testid="about-image">
             <img 
-              src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+              src={aboutImage} 
               alt="Sihaya the Stay exterior view" 
               className="rounded-2xl shadow-xl w-full h-auto object-cover" 
             />

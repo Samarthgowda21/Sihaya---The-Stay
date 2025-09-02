@@ -1,33 +1,46 @@
+import room1 from "@/assets/room1.png";
+import aerialView from "@/assets/aerial-view.png";
+import propertyView from "@/assets/property-view.png";
+import exteriorFront from "@/assets/exterior-front.png";
+import commonArea from "@/assets/common-area.png";
+import firepit from "@/assets/firepit.png";
+import exteriorGarden from "@/assets/exterior-garden.png";
+
 export default function GallerySection() {
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1466781783364-36c955e42a7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=800",
-      alt: "Garden area",
-      aspectRatio: "tall"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Common area",
+      src: aerialView,
+      alt: "Aerial view of Sihaya property",
       aspectRatio: "wide"
     },
     {
-      src: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600",
-      alt: "Coconut trees",
+      src: room1,
+      alt: "Deluxe room interior",
       aspectRatio: "square"
     },
     {
-      src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Kitchen area",
+      src: propertyView,
+      alt: "Property landscape view",
       aspectRatio: "wide"
     },
     {
-      src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600",
-      alt: "Seating area",
+      src: exteriorFront,
+      alt: "Property exterior front view",
       aspectRatio: "square"
     },
     {
-      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=800",
-      alt: "Sunset view",
+      src: commonArea,
+      alt: "Common area lounge",
+      aspectRatio: "wide"
+    },
+    {
+      src: firepit,
+      alt: "Fire pit area at night",
+      aspectRatio: "wide"
+    },
+    {
+      src: exteriorGarden,
+      alt: "Garden and exterior view",
       aspectRatio: "tall"
     }
   ];

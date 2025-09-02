@@ -1,17 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import heroImage from "@/assets/property-view.png";
 
 export default function HeroSection() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
+  const scrollToGallery = () => {
+    const element = document.getElementById('gallery');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const openWhatsApp = () => {
-    const message = encodeURIComponent("Hi! I'm interested in booking a stay at Sihaya the Stay. Could you please provide more information?");
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
   };
 
   return (
@@ -19,7 +15,7 @@ export default function HeroSection() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1466781783364-36c955e42a7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: `url(${heroImage})`
         }}
       />
       <div className="absolute inset-0 hero-gradient" />
@@ -39,21 +35,12 @@ export default function HeroSection() {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" data-testid="hero-actions">
           <Button 
-            onClick={scrollToContact}
+            onClick={scrollToGallery}
             size="lg"
             className="bg-primary text-primary-foreground px-8 py-4 text-lg hover:bg-primary/90 transform hover:scale-105 transition-all shadow-lg"
-            data-testid="button-book-hero"
+            data-testid="button-explore-hero"
           >
-            Book Your Stay
-          </Button>
-          <Button 
-            onClick={openWhatsApp}
-            size="lg"
-            className="bg-secondary text-secondary-foreground px-8 py-4 text-lg hover:bg-secondary/90 transform hover:scale-105 transition-all shadow-lg"
-            data-testid="button-whatsapp-hero"
-          >
-            <MessageCircle className="w-5 h-5 mr-3" />
-            WhatsApp Us
+            Explore Our Spaces
           </Button>
         </div>
       </div>
