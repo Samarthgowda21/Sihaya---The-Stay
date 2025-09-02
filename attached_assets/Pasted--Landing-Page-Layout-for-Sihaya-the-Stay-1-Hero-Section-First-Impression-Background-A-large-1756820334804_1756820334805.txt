@@ -1,0 +1,161 @@
+🌿 Landing Page Layout for "Sihaya the Stay"
+1. Hero Section (First Impression)
+
+Background: A large, beautiful photo of the homestay — maybe the garden with coconut & mango trees.
+
+Overlay: A slightly dark filter so text is readable.
+
+Content (centered):
+
+Logo & tagline: "Sihaya the Stay – A Home Amidst Nature"
+
+Big bold headline: "Relax. Reconnect. Recharge."
+
+Short subheading: "Experience serene living in the heart of our farm, surrounded by lush greenery and comfort."
+
+Buttons:
+
+Book Now (bright color, purple/green)
+
+WhatsApp Us (with WhatsApp icon, easy connect)
+
+2. About Section (Who We Are)
+
+Heading: "About Sihaya the Stay"
+
+Content: A short story of the homestay:
+
+“Nestled inside our family farm filled with coconut and mango trees, Sihaya the Stay offers 4 cozy rooms with attached bathrooms, a spacious common area with TV and sofa, and a fully equipped kitchen. Step outside to enjoy our small garden and experience nature at its best.”
+
+Layout:
+
+Left: An image of the homestay exterior.
+
+Right: Text description with highlights (✓ nature stay, ✓ 4 rooms, ✓ family-friendly).
+
+3. Rooms & Amenities Section
+
+Heading: "Stay With Comfort"
+
+Content: Showcase the rooms in a grid with photos.
+
+Card for each room:
+
+Room photo
+
+Title (Deluxe Room, Cozy Room, etc.)
+
+Short line: "Spacious, private bathroom, WiFi included."
+
+Amenities icons (WiFi, kitchen, AC/fan, TV, parking, garden access).
+
+4. Gallery Section (Show, Don’t Tell)
+
+Heading: "Our Space in Pictures"
+
+Layout: Masonry-style or grid gallery of:
+
+The garden
+
+The mango/coconut trees
+
+Common area
+
+Kitchen & dining
+
+Rooms
+
+Sunset view (if any)
+
+This is what convinces people — so high-quality photos matter most here 📸.
+
+5. Location Section (Where We Are)
+
+Heading: "Find Us"
+
+Map Embed: Google Maps iframe of the homestay location.
+
+Description:
+
+“Located just 20 minutes from Mysore city, surrounded by nature yet easily accessible.”
+
+Add nearby attractions if possible (Brindavan Gardens, Chamundi Hills, etc.).
+
+6. Testimonials (What Guests Say)
+
+Heading: "Guest Experiences"
+
+Carousel or cards with 3–4 reviews (real ones later, but we can put placeholders now):
+
+🌟🌟🌟🌟🌟
+“A peaceful getaway! The mango trees and garden made it magical. Hosts were super friendly.” – Ananya, Bangalore
+
+7. Contact & Booking Section
+
+Heading: "Plan Your Stay"
+
+Content:
+
+Left: Contact details
+
+Phone: +91 XXXXX XXXXX
+
+Email: stay@sihaya.com
+
+WhatsApp button
+
+Right: Simple booking inquiry form:
+
+Name, Email, Dates, Message
+
+Submit button (can later link to email or WhatsApp)
+
+8. Footer
+
+Dark background with:
+
+Logo + tagline
+
+Quick links (About, Rooms, Gallery, Contact)
+
+Social icons (Instagram, WhatsApp, Facebook)
+
+Copyright: © 2025 Sihaya the Stay. All rights reserved.
+
+🎨 Design Style Guide
+
+Colors:
+
+Primary: Deep Purple (#6C63FF) → luxury + calm
+
+Secondary: Green (#3BB273) → nature + freshness
+
+Background: Soft cream/white
+
+Fonts:
+
+Headings: Bold, clean (like Poppins or Montserrat)
+
+Body: Simple (like Open Sans or Lato)
+
+Mood: Calm, natural, modern but homely
+
+✅ Final Structure (Top to Bottom)
+
+Header (logo + navigation + book now button)
+
+Hero section with big image and call-to-action
+
+About us section (story + photo)
+
+Rooms & amenities grid
+
+Gallery
+
+Location map
+
+Testimonials
+
+Contact/booking form
+
+Footer
