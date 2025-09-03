@@ -10,7 +10,7 @@ export default function LocationSection() {
     {
       icon: Clock,
       title: "Travel Time",
-      description: "20 minutes from Mysore city center"
+      description: "1 hour 20 minutes from Mysore city center"
     },
     {
       icon: Car,
@@ -20,9 +20,11 @@ export default function LocationSection() {
   ];
 
   const nearbyAttractions = [
-    "Brindavan Gardens - 15 mins",
-    "Chamundi Hills - 25 mins",
-    "Mysore Palace - 20 mins"
+    "Melukote - 23 mins",
+    "Srirangapatana - 50 mins",
+    "Brindavan Gardens - 55 mins",
+    "Mysore Palace - 1 hr 20 mins",
+    "Chamundi Hills - 1 hr 30 mins"
   ];
 
   return (
@@ -33,7 +35,7 @@ export default function LocationSection() {
             Find Us
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="location-subtitle">
-            Located just 20 minutes from Mysore city, surrounded by nature yet easily accessible.
+            Located just 1 hr 20 minutes from Mysore city, surrounded by nature yet easily accessible.
           </p>
         </div>
         
@@ -79,7 +81,7 @@ export default function LocationSection() {
           <div className="bg-card rounded-2xl overflow-hidden shadow-lg" data-testid="map-container">
             <div className="w-full h-96 bg-muted flex items-center justify-center">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124410.8038087096!2d76.56120995000001!3d12.297369900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf70381e572f73%3A0x2b8a1ce8d1c82aa1!2sMysore%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1639000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3911.014987174257!2d76.705137!3d12.729537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf91e42316f2bb%3A0x7fc86b4d50f8d5e3!2sSujay%E2%80%99s%20Farm!5e0!3m2!1sen!2sin!4v1693732300000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

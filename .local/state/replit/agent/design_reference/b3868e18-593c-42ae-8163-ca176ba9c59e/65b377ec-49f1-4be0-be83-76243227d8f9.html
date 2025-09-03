@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sihaya the Stay - A Home Amidst Nature</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "sans-serif"],
+                    heading: ["Poppins", "sans-serif"],
+                    accent: ["Montserrat", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --background: hsl(210 40% 98%);
+            --foreground: hsl(210 10% 23%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(210 10% 23%);
+            --primary: hsl(244 86% 70%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(142 51% 42%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(210 10% 45%);
+            --accent: hsl(210 40% 94%);
+            --accent-foreground: hsl(210 10% 23%);
+            --border: hsl(210 20% 90%);
+            --ring: hsl(244 86% 70%);
+            --radius: 0.5rem;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.8) 0%, rgba(59, 178, 115, 0.6) 100%);
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground font-sans smooth-scroll">
+    <!-- @COMPONENT: Header [navigation with logo and CTA] -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                    <span class="text-primary-foreground font-bold text-xl">S</span>
+                </div>
+                <div>
+                    <h1 class="font-heading font-bold text-xl text-primary">Sihaya</h1>
+                    <p class="text-xs text-muted-foreground">The Stay</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-foreground hover:text-primary transition-colors">About</a>
+                <a href="#rooms" class="text-foreground hover:text-primary transition-colors">Rooms</a>
+                <a href="#gallery" class="text-foreground hover:text-primary transition-colors">Gallery</a>
+                <a href="#location" class="text-foreground hover:text-primary transition-colors">Location</a>
+                <a href="#contact" class="text-foreground hover:text-primary transition-colors">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <button data-event="click:openWhatsApp" class="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg hover:bg-secondary/90 transition-colors flex items-center space-x-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="hidden sm:inline">WhatsApp</span>
+                </button>
+                <button data-event="click:scrollToBooking" class="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                    Book Now
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero [main hero section with background image] -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Lush tropical garden with coconut palms and mango trees in a homestay setting -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+             style="background-image: url('https://pixabay.com/get/g6a30ffbd147583890d1efaab686f934134e2e7da76aa8ee281595c4640708ac22a49c86481351894fd0a812e8b94be6017f69efb1cbc73f3614c6689c29083c1_1280.jpg');">
+        </div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+            <div class="mb-6">
+                <h1 class="font-heading font-bold text-5xl md:text-7xl mb-4 leading-tight">
+                    Relax. Reconnect. <span class="text-secondary">Recharge.</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-8 opacity-90">
+                    Experience serene living in the heart of our farm, surrounded by lush greenery and comfort.
+                </p>
+                <p class="text-lg opacity-80 font-accent">
+                    A Home Amidst Nature
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button data-event="click:scrollToBooking" class="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg">
+                    Book Your Stay
+                </button>
+                <button data-event="click:openWhatsApp" class="bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-bold text-lg hover:bg-secondary/90 transition-all transform hover:scale-105 shadow-lg flex items-center space-x-3">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>WhatsApp Us</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl opacity-70"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero -->
+
+    <!-- @COMPONENT: About [story and highlights section] -->
+    <section id="about" class="py-20 bg-card">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <!-- Rustic homestay exterior surrounded by tropical vegetation and coconut trees -->
+                    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Sihaya the Stay exterior view" 
+                         class="rounded-2xl shadow-xl w-full h-auto object-cover" />
+                </div>
+                
+                <div class="space-y-6">
+                    <h2 class="font-heading font-bold text-4xl md:text-5xl text-primary">
+                        About Sihaya the Stay
+                    </h2>
+                    
+                    <p class="text-lg text-muted-foreground leading-relaxed">
+                        Nestled inside our family farm filled with coconut and mango trees, Sihaya the Stay offers 4 cozy rooms with attached bathrooms, a spacious common area with TV and sofa, and a fully equipped kitchen. Step outside to enjoy our small garden and experience nature at its best.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-leaf text-secondary"></i>
+                            </div>
+                            <span class="font-medium">Nature Stay</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-bed text-secondary"></i>
+                            </div>
+                            <span class="font-medium">4 Cozy Rooms</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-secondary"></i>
+                            </div>
+                            <span class="font-medium">Family Friendly</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-car text-secondary"></i>
+                            </div>
+                            <span class="font-medium">Free Parking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About -->
+
+    <!-- @COMPONENT: Rooms [showcase rooms and amenities] -->
+    <section id="rooms" class="py-20 bg-muted">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">
+                    Stay With Comfort
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Each room is thoughtfully designed to provide comfort while maintaining our connection to nature.
+                </p>
+            </div>
+            
+            <!-- @MAP: rooms.map(room => ( -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+                <div data-mock="true" class="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <!-- Cozy bedroom with wooden furnishing and natural lighting -->
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                         alt="Deluxe Room" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-heading font-bold text-xl mb-2">Deluxe Room</h3>
+                        <p class="text-muted-foreground mb-4">Spacious, private bathroom, WiFi included.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-wifi mr-1"></i>WiFi</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-snowflake mr-1"></i>AC</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-tv mr-1"></i>TV</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-mock="true" class="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <!-- Comfortable bedroom with garden view and natural decor -->
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                         alt="Garden View Room" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-heading font-bold text-xl mb-2">Garden View Room</h3>
+                        <p class="text-muted-foreground mb-4">Peaceful garden views, private bathroom, WiFi included.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-wifi mr-1"></i>WiFi</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-fan mr-1"></i>Fan</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-leaf mr-1"></i>Garden</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-mock="true" class="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <!-- Cozy bedroom interior with warm lighting and comfortable bedding -->
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                         alt="Cozy Room" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-heading font-bold text-xl mb-2">Cozy Room</h3>
+                        <p class="text-muted-foreground mb-4">Intimate space, private bathroom, WiFi included.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-wifi mr-1"></i>WiFi</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-fan mr-1"></i>Fan</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-coffee mr-1"></i>Tea/Coffee</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-mock="true" class="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <!-- Simple but comfortable bedroom with natural textures and soft lighting -->
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                         alt="Standard Room" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-heading font-bold text-xl mb-2">Standard Room</h3>
+                        <p class="text-muted-foreground mb-4">Comfortable basics, private bathroom, WiFi included.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-wifi mr-1"></i>WiFi</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-fan mr-1"></i>Fan</span>
+                            <span class="px-3 py-1 bg-accent rounded-full text-sm"><i class="fas fa-bath mr-1"></i>Private Bath</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+            
+            <div class="bg-card rounded-2xl p-8">
+                <h3 class="font-heading font-bold text-2xl text-center mb-8">Shared Amenities</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-utensils text-primary text-xl"></i>
+                        </div>
+                        <span class="text-sm font-medium">Kitchen</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-couch text-primary text-xl"></i>
+                        </div>
+                        <span class="text-sm font-medium">Common Area</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-car text-primary text-xl"></i>
+                        </div>
+                        <span class="text-sm font-medium">Parking</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-seedling text-primary text-xl"></i>
+                        </div>
+                        <span class="text-sm font-medium">Garden</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-tv text-primary text-xl"></i>
+                        </div>
+                        <span class="text-sm font-medium">Entertainment</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-wifi text-primary text-xl"></i>
+                        </div>
+                        <span class="text-sm font-medium">Free WiFi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Rooms -->
+
+    <!-- @COMPONENT: Gallery [photo showcase] -->
+    <section id="gallery" class="py-20 bg-card">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">
+                    Our Space in Pictures
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Discover the natural beauty and comfortable spaces that make Sihaya the Stay special.
+                </p>
+            </div>
+            
+            <div class="masonry-grid">
+                <div class="masonry-item">
+                    <!-- Lush garden with tropical plants and coconut trees -->
+                    <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=800" 
+                         alt="Garden area" 
+                         class="w-full rounded-xl shadow-lg" />
+                </div>
+                <div class="masonry-item">
+                    <!-- Comfortable living room with sofa and warm lighting -->
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                         alt="Common area" 
+                         class="w-full rounded-xl shadow-lg" />
+                </div>
+                <div class="masonry-item">
+                    <!-- Tropical garden path with coconut palms and lush vegetation -->
+                    <img src="https://pixabay.com/get/gc474f302fa60d9a485759b821bec07f1957ddeb050f9cecbfa4edc8c6abd0fff35a897a8f646421a60dea367b429a3e14b1c2f2188f3050fbd33c0206af412e2_1280.jpg" 
+                         alt="Coconut trees" 
+                         class="w-full rounded-xl shadow-lg" />
+                </div>
+                <div class="masonry-item">
+                    <!-- Modern kitchen with natural lighting and clean design -->
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                         alt="Kitchen area" 
+                         class="w-full rounded-xl shadow-lg" />
+                </div>
+                <div class="masonry-item">
+                    <!-- Cozy seating area with sofa and cushions -->
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600" 
+                         alt="Seating area" 
+                         class="w-full rounded-xl shadow-lg" />
+                </div>
+                <div class="masonry-item">
+                    <!-- Beautiful sunset view through tropical trees -->
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=800" 
+                         alt="Sunset view" 
+                         class="w-full rounded-xl shadow-lg" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Gallery -->
+
+    <!-- @COMPONENT: Location [map and location details] -->
+    <section id="location" class="py-20 bg-muted">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">
+                    Find Us
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Located just 20 minutes from Mysore city, surrounded by nature yet easily accessible.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="bg-card rounded-2xl p-8">
+                    <h3 class="font-heading font-bold text-2xl mb-6">Location Details</h3>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            <div>
+                                <p class="font-medium">Address</p>
+                                <p class="text-muted-foreground" data-bind="homestay.address">Sihaya Farm, Near Mysore, Karnataka</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-clock text-primary mt-1"></i>
+                            <div>
+                                <p class="font-medium">Travel Time</p>
+                                <p class="text-muted-foreground">20 minutes from Mysore city center</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-car text-primary mt-1"></i>
+                            <div>
+                                <p class="font-medium">Transportation</p>
+                                <p class="text-muted-foreground">Free parking available</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="font-heading font-bold text-lg mb-4">Nearby Attractions</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-pin text-secondary text-sm"></i>
+                            <span class="text-sm">Brindavan Gardens - 15 mins</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-pin text-secondary text-sm"></i>
+                            <span class="text-sm">Chamundi Hills - 25 mins</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-pin text-secondary text-sm"></i>
+                            <span class="text-sm">Mysore Palace - 20 mins</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-card rounded-2xl overflow-hidden shadow-lg">
+                    <!-- @FUNCTIONALITY: Google Maps integration showing homestay location -->
+                    <div class="w-full h-96 bg-muted flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-map text-4xl text-muted-foreground mb-4"></i>
+                            <p class="text-muted-foreground">Interactive Map</p>
+                            <p class="text-sm text-muted-foreground">Google Maps integration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Location -->
+
+    <!-- @COMPONENT: Testimonials [guest reviews carousel] -->
+    <section class="py-20 bg-card">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">
+                    Guest Experiences
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Hear from our guests about their memorable stays at Sihaya the Stay.
+                </p>
+            </div>
+            
+            <!-- @MAP: testimonials.map(testimonial => ( -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div data-mock="true" class="testimonial-card bg-muted rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-muted-foreground mb-4">
+                        "A peaceful getaway! The mango trees and garden made it magical. Hosts were super friendly and the rooms were spotlessly clean."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold mr-3">
+                            A
+                        </div>
+                        <div>
+                            <p class="font-medium" data-bind="testimonial.author">Ananya</p>
+                            <p class="text-sm text-muted-foreground" data-bind="testimonial.location">Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-mock="true" class="testimonial-card bg-muted rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-muted-foreground mb-4">
+                        "Perfect for families! Kids loved the garden and we enjoyed the peaceful environment. The kitchen facilities were excellent."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-secondary-foreground font-bold mr-3">
+                            R
+                        </div>
+                        <div>
+                            <p class="font-medium" data-bind="testimonial.author">Raj Kumar</p>
+                            <p class="text-sm text-muted-foreground" data-bind="testimonial.location">Chennai</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-mock="true" class="testimonial-card bg-muted rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-muted-foreground mb-4">
+                        "Amazing location close to Mysore attractions. The natural setting is incredibly relaxing and the hosts are wonderful people."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold mr-3">
+                            S
+                        </div>
+                        <div>
+                            <p class="font-medium" data-bind="testimonial.author">Sneha Patel</p>
+                            <p class="text-sm text-muted-foreground" data-bind="testimonial.location">Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Testimonials -->
+
+    <!-- @COMPONENT: Contact [booking and contact form] -->
+    <section id="contact" class="py-20 bg-muted">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">
+                    Plan Your Stay
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Ready to experience the tranquility of Sihaya the Stay? Get in touch with us today.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-card rounded-2xl p-8">
+                    <h3 class="font-heading font-bold text-2xl mb-6">Contact Details</h3>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Phone</p>
+                                <p class="text-muted-foreground" data-bind="contact.phone">+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <p class="text-muted-foreground" data-bind="contact.email">stay@sihaya.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">WhatsApp</p>
+                                <p class="text-muted-foreground" data-bind="contact.whatsapp">+91 98765 43210</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button data-event="click:openWhatsApp" class="w-full bg-secondary text-secondary-foreground py-4 rounded-xl font-bold text-lg hover:bg-secondary/90 transition-colors flex items-center justify-center space-x-3">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>Chat on WhatsApp</span>
+                    </button>
+                </div>
+                
+                <div class="bg-card rounded-2xl p-8">
+                    <h3 class="font-heading font-bold text-2xl mb-6">Booking Inquiry</h3>
+                    
+                    <!-- @STATE: formData:object = {name: '', email: '', checkIn: '', checkOut: '', guests: 1, message: ''} -->
+                    <form data-event="submit:handleBookingInquiry" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Name *</label>
+                                <input type="text" data-bind="formData.name" required 
+                                       class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors" 
+                                       placeholder="Your name" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email *</label>
+                                <input type="email" data-bind="formData.email" required 
+                                       class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors" 
+                                       placeholder="your@email.com" />
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Check-in Date</label>
+                                <input type="date" data-bind="formData.checkIn" 
+                                       class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Check-out Date</label>
+                                <input type="date" data-bind="formData.checkOut" 
+                                       class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Number of Guests</label>
+                            <select data-bind="formData.guests" 
+                                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors">
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5+ Guests</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea data-bind="formData.message" rows="4" 
+                                      class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors resize-none" 
+                                      placeholder="Any special requests or questions..."></textarea>
+                        </div>
+                        
+                        <button type="submit" data-implementation="Should validate form and send booking inquiry via email/WhatsApp" 
+                                class="w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-colors">
+                            Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact -->
+
+    <!-- @COMPONENT: Footer [site footer with links and social] -->
+    <footer class="bg-foreground text-background py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="text-primary-foreground font-bold text-xl">S</span>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-bold text-xl text-primary">Sihaya</h3>
+                            <p class="text-xs opacity-80">The Stay</p>
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-80 mb-4">
+                        A home amidst nature, offering peaceful stays in the heart of our family farm.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="opacity-80 hover:opacity-100 transition-opacity">About</a></li>
+                        <li><a href="#rooms" class="opacity-80 hover:opacity-100 transition-opacity">Rooms</a></li>
+                        <li><a href="#gallery" class="opacity-80 hover:opacity-100 transition-opacity">Gallery</a></li>
+                        <li><a href="#location" class="opacity-80 hover:opacity-100 transition-opacity">Location</a></li>
+                        <li><a href="#contact" class="opacity-80 hover:opacity-100 transition-opacity">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li data-bind="contact.phone">+91 98765 43210</li>
+                        <li data-bind="contact.email">stay@sihaya.com</li>
+                        <li>Near Mysore, Karnataka</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" data-event="click:openInstagram" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" data-event="click:openWhatsApp" class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center hover:bg-secondary/30 transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" data-event="click:openFacebook" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-border/20 pt-8 text-center">
+                <p class="text-sm opacity-60">
+                    © 2025 Sihaya the Stay. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+    (function() {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            }
+        });
+
+        // Form submission handler
+        const form = document.querySelector('form[data-event*="handleBookingInquiry"]');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement form validation and submission logic
+                alert('Thank you for your inquiry! We will get back to you soon.');
+            });
+        }
+
+        // WhatsApp button handlers
+        document.querySelectorAll('[data-event*="openWhatsApp"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // TODO: Implement WhatsApp integration
+                const message = encodeURIComponent("Hi! I'm interested in booking a stay at Sihaya the Stay. Could you please provide more information?");
+                window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+            });
+        });
+
+        // Booking button handlers
+        document.querySelectorAll('[data-event*="scrollToBooking"]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

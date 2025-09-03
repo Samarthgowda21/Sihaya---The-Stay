@@ -38,11 +38,7 @@ export default function GallerySection() {
       alt: "Fire pit area at night",
       aspectRatio: "wide"
     },
-    {
-      src: exteriorGarden,
-      alt: "Garden and exterior view",
-      aspectRatio: "tall"
-    }
+
   ];
 
   return (
